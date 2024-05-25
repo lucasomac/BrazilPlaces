@@ -62,3 +62,12 @@ ela se perdia. Adicionei comentário para que ela pudesse compreender melhor o c
 determinados momentos ela acabou gerando mais comentários e não entendeu dever seguir o que
 estava previsto no contexto. Somente após eu dar início de fato a função é que ela foi capaz de
 entender que precisava gerar o conteúdo correto.
+
+Durante o desenvolvimento do layout para a lista de lugares, o GitHub Copilot muitas vezes sugeria
+código correto, porém sem os fechamentos de instruções, por exemplo, faltando o fecha parenteses de
+algum componente ou classe. O GitHub Copilot foi muito eficiente em gerar dados para a lista de
+lugares para que eu pudesse testar como estava ficando o comportamento dela. Foi muito eficaz em
+conseguir definir que eu estava tentando colocar um espaço entre as células na listagem. Nesta parte
+de código, o GitHub Copilot mostrou-se menos eficiente. Quase todo código que conseguiu ser gerado
+por ele precisou de algum tipo de ajuste. Apenas na parte de criação de dados mocados que ele se
+saiu muito bem. A criação do layout da lista de lugares levou cerca de 3 horas.
