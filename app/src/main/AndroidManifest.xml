@@ -13,9 +13,13 @@
         android:theme="@style/Theme.BrazilPlaces"
         tools:targetApi="31">
         <activity
+            android:name=".ui.screens.RegisterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.BrazilPlaces" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.BrazilPlaces">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -71,3 +71,9 @@ conseguir definir que eu estava tentando colocar um espaço entre as células na
 de código, o GitHub Copilot mostrou-se menos eficiente. Quase todo código que conseguiu ser gerado
 por ele precisou de algum tipo de ajuste. Apenas na parte de criação de dados mocados que ele se
 saiu muito bem. A criação do layout da lista de lugares levou cerca de 3 horas.
+
+Durante a criação do banco de dados e sua configuração a IA se mostrou meio perdida como se não
+conhece bem o que devia fazer nesse contexto. A IA não conseguiu gerar o código de forma eficiente,
+isso quando conseguiu gerar algo. Precisei fazer muitas modificações para que ele funcionasse
+corretamente. A criação do banco de
+dados e sua configuração levou cerca de 4 horas. 
