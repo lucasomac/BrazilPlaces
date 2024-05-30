@@ -79,7 +79,7 @@ fun PlaceCardPreviewTrue() {
             1,
             name = "São Paulo",
             description = "The city of São Paulo is the largest city in Brazil and the capital of the state of São Paulo. It is the most populous city in Brazil, the Americas, the Western Hemisphere, and the Southern Hemisphere.",
-            image = 0,
+            
             location = "São Paulo, SP",
             true
         )
@@ -94,7 +94,7 @@ fun PlaceCardPreviewFalse() {
             2,
             name = "Teresina",
             description = "The city of Teresina is the capital of the state of Piauí, Brazil. It is the only capital in the northeastern states that was planned before its foundation, and it is the third capital of Brazil with the best quality of life, according to the United Nations Development Program (UNDP)",
-            image = 0,
+            
             location = "Teresina, PI",
             false
         )

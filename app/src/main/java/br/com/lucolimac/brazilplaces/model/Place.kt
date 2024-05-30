@@ -6,10 +6,9 @@ import androidx.room.PrimaryKey
 @Entity
 data class Place(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int=0,
     val name: String,
     val description: String,
-    val image: Int,
     val location: String,
-    val hasBeenVisited: Boolean
+    val hasBeenVisited: Boolean = false
 )

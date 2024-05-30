@@ -14,14 +14,14 @@ interface PlaceDAO {
     fun createPlace(place: Place)
 
     @Query("SELECT * FROM place")
-    fun gelAllPlace(): List<Place>
+    suspend fun gelAllPlace(): List<Place>
 
     @Query("SELECT * FROM place WHERE name LIKE :name")
-    fun getPlaceByName(name: String): Place
+   suspend fun getPlaceByName(name: String): Place
 
     @Update
-    fun updatePlace(place: Place)
+   suspend fun updatePlace(place: Place)
 
     @Delete
-    fun deletePlace(place: Place)
+   suspend fun deletePlace(place: Place)
 }

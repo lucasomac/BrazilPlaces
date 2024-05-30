@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,12 +14,12 @@
         android:theme="@style/Theme.BrazilPlaces"
         tools:targetApi="31">
         <activity
-            android:name=".ui.screens.RegisterActivity"
+            android:name=".ui.activity.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.BrazilPlaces" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.BrazilPlaces">
             <intent-filter>

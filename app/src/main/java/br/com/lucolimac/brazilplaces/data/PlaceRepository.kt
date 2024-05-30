@@ -1,30 +1,29 @@
 package br.com.lucolimac.brazilplaces.data
 
-import android.content.Context
-import br.com.lucolimac.brazilplaces.dao.PlaceDatabase
+import br.com.lucolimac.brazilplaces.dao.PlaceDAO
+import br.com.lucolimac.brazilplaces.domain.PlaceUseCase
 import br.com.lucolimac.brazilplaces.model.Place
 
-class PlaceRepository(context: Context) {
-    private val placeDatabase = PlaceDatabase.getInstance(context)
-    private val placeDAO = placeDatabase.placeDAO()
+class PlaceRepository(private val placeDAO: PlaceDAO) : PlaceUseCase {
 
-    fun createPlace(place: Place) {
+
+    override suspend fun savePlace(place: Place) {
         placeDAO.createPlace(place)
     }
 
-    fun getAllPlace(): List<Place> {
-        return placeDAO.gelAllPlace()
-    }
-
-    fun getPlaceByName(name: String): Place {
-        return placeDAO.getPlaceByName(name)
-    }
-
-    fun updatePlace(place: Place) {
+    override suspend fun updatePlace(place: Place) {
         placeDAO.updatePlace(place)
     }
 
-    fun deletePlace(place: Place) {
+    override suspend fun deletePlace(place: Place) {
         placeDAO.deletePlace(place)
+    }
+
+    override suspend fun getPlaceById(name: String): Place {
+        return placeDAO.getPlaceByName(name)
+    }
+
+    override suspend fun getAllPlaces(): List<Place> {
+        return placeDAO.gelAllPlace()
     }
 }
