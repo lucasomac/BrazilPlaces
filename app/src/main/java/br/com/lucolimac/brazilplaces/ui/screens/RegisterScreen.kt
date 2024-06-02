@@ -1,5 +1,6 @@
 package br.com.lucolimac.brazilplaces.ui.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,7 +29,9 @@ fun RegisterScreen(
     saveAddress: (String) -> Unit
 ) {
 
-    Column(modifier = Modifier.padding(paddingValues)) {
+    Column(
+        modifier = Modifier.padding(paddingValues), verticalArrangement = Arrangement.Top
+    ) {
         PlaceField(padding = paddingValues, label = "Nome do local", onValueChange = saveName)
         PlaceField(
             padding = paddingValues, label = "Descrição do local", onValueChange = saveDescription
@@ -38,7 +41,9 @@ fun RegisterScreen(
         )
 
         ElevatedButton(
-            onClick = onSaveClick,
+            onClick = {
+                onSaveClick.invoke()
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(paddingValues)

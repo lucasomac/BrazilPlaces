@@ -7,16 +7,19 @@ import br.com.lucolimac.brazilplaces.model.Place
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class RegisterPlaceViewModel(
     private val placeUseCase: PlaceUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-    private val _places = MutableStateFlow<List<Place>>(listOf())
+    private val _places = MutableStateFlow<List<Place>>(emptyList())
+    val places: StateFlow<List<Place>> get() = _places
 
-    val places = _places.asStateFlow()
+    init {
+        getAllPlaces()
+    }
 
     fun savePlace(place: Place) {
         viewModelScope.launch(dispatcher) {
@@ -44,7 +47,9 @@ class RegisterPlaceViewModel(
 
     fun getAllPlaces() {
         viewModelScope.launch(dispatcher) {
-            _places.value = placeUseCase.getAllPlaces()
+            placeUseCase.getAllPlaces().collect { placesList ->
+                _places.value = placesList
+            }
         }
     }
 }

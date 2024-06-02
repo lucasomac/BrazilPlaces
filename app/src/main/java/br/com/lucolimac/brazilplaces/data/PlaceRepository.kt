@@ -3,7 +3,7 @@ package br.com.lucolimac.brazilplaces.data
 import br.com.lucolimac.brazilplaces.dao.PlaceDAO
 import br.com.lucolimac.brazilplaces.domain.PlaceUseCase
 import br.com.lucolimac.brazilplaces.model.Place
-
+import kotlinx.coroutines.flow.Flow
 class PlaceRepository(private val placeDAO: PlaceDAO) : PlaceUseCase {
 
 
@@ -23,7 +23,7 @@ class PlaceRepository(private val placeDAO: PlaceDAO) : PlaceUseCase {
         return placeDAO.getPlaceByName(name)
     }
 
-    override suspend fun getAllPlaces(): List<Place> {
+    override suspend fun getAllPlaces(): Flow<List<Place>> {
         return placeDAO.gelAllPlace()
     }
 }

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -14,6 +15,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import br.com.lucolimac.brazilplaces.model.Place
 import br.com.lucolimac.brazilplaces.ui.screens.RegisterScreen
@@ -45,11 +47,13 @@ class RegisterActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BrazilPlacesTheme {
-                Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+                Scaffold(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp), topBar = {
                     TopAppBar(
                         title = { Text(text = "Cadastro de local") },
                         navigationIcon = {
-                            IconButton(onClick = { }) {
+                            IconButton(onClick = { onBackPressedDispatcher.onBackPressed() }) {
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                     contentDescription = "Localized description"
@@ -69,6 +73,7 @@ class RegisterActivity : ComponentActivity() {
                                 location = addressPlace
                             )
                             savePlace(place)
+                            onBackPressedDispatcher.onBackPressed()
                         })
                 }
             }

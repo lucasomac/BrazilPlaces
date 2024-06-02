@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import br.com.lucolimac.brazilplaces.model.Place
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlaceDAO {
@@ -14,14 +15,14 @@ interface PlaceDAO {
     fun createPlace(place: Place)
 
     @Query("SELECT * FROM place")
-    suspend fun gelAllPlace(): List<Place>
+    fun gelAllPlace(): Flow<List<Place>>
 
     @Query("SELECT * FROM place WHERE name LIKE :name")
-   suspend fun getPlaceByName(name: String): Place
+    suspend fun getPlaceByName(name: String): Place
 
     @Update
-   suspend fun updatePlace(place: Place)
+    suspend fun updatePlace(place: Place)
 
     @Delete
-   suspend fun deletePlace(place: Place)
+    suspend fun deletePlace(place: Place)
 }

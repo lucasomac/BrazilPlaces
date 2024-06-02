@@ -76,4 +76,13 @@ Durante a criação do banco de dados e sua configuração a IA se mostrou meio 
 conhece bem o que devia fazer nesse contexto. A IA não conseguiu gerar o código de forma eficiente,
 isso quando conseguiu gerar algo. Precisei fazer muitas modificações para que ele funcionasse
 corretamente. A criação do banco de
-dados e sua configuração levou cerca de 4 horas. 
+dados e sua configuração levou cerca de 4 horas.
+
+Após a criação da tela de registro e a mesma estar funcionando me dparei com um problema na
+atualização de tela após o cadsatro. O github copilot não me oferecia opções que pudesse resolver o
+meu problema. Sendo asssim fiz uso do chat gpt e pedi para ele atuar como um desenvolvedor de apps e
+que estava trabalhadno no tema que estou desenvolvendo. Explicada a situção no prompt o chat gpt me
+deu uma resposta que atendeu a solução para meu problema. Tive que alterar algumas pequenas partes
+do código para adequar, mas de uma maneira geral o chat gpt me ajudou a resolver este problema. Já
+tinah mais de um dia tentando resolver esse problema sem a jauda direta da IA, porém com o chat gpt
+que pude ter a solução correta.
