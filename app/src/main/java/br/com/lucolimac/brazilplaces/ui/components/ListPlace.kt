@@ -13,16 +13,21 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import br.com.lucolimac.brazilplaces.model.Place
 import br.com.lucolimac.brazilplaces.ui.viewModel.RegisterPlaceViewModel
 
 @Composable
-fun ListPlace(paddingValues: PaddingValues, viewModel: RegisterPlaceViewModel) {
+fun ListPlace(
+    paddingValues: PaddingValues,
+    viewModel: RegisterPlaceViewModel,
+    onPlaceClick: (Place) -> Unit = {}
+) {
     val places by viewModel.places.collectAsState()
     LazyColumn(
         modifier = Modifier.fillMaxWidth(), contentPadding = paddingValues
     ) {
         itemsIndexed(places) { index, item ->
-            PlaceCard(place = item)
+            PlaceCard(place = item, onClickCardPlace = onPlaceClick)
             if (index < places.lastIndex) Surface {
                 Spacer(
                     modifier = Modifier

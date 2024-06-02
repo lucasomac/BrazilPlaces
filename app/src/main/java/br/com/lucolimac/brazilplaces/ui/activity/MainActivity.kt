@@ -15,6 +15,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
+import br.com.lucolimac.brazilplaces.model.Place
 import br.com.lucolimac.brazilplaces.ui.components.ListPlace
 import br.com.lucolimac.brazilplaces.ui.theme.BrazilPlacesTheme
 import br.com.lucolimac.brazilplaces.ui.viewModel.RegisterPlaceViewModel
@@ -43,7 +44,8 @@ class MainActivity : ComponentActivity() {
                     }) { innerPadding ->
                     ListPlace(
                         paddingValues = innerPadding,
-                        viewModel = viewModel
+                        viewModel = viewModel,
+                        onPlaceClick = {}
                     )
                 }
             }
@@ -53,6 +55,15 @@ class MainActivity : ComponentActivity() {
     private fun navigateToRegisterPlace() {
         // Navega para a tela de cadastro de locais
         startActivity(Intent(this, RegisterActivity::class.java))
+    }
+
+    private fun navigateToUpdatePlace(place: Place) {
+        // Navega para a tela de cadastro de locais
+        startActivity(Intent(this, RegisterActivity::class.java).apply {
+            putExtras(Bundle().apply {
+                putSerializable("place", place)
+            })
+        })
     }
 }
 

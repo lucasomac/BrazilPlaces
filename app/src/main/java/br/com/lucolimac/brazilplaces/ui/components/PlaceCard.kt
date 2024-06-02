@@ -21,7 +21,7 @@ import br.com.lucolimac.brazilplaces.R
 import br.com.lucolimac.brazilplaces.model.Place
 
 @Composable
-fun PlaceCard(place: Place) {
+fun PlaceCard(place: Place, onClickCardPlace: (Place) -> Unit = {}) {
     //create a card with the place information
     //the card will have the place name, description, image and location
     //the image will be a placeholder for now
@@ -37,6 +37,7 @@ fun PlaceCard(place: Place) {
     //the place image will have a placeholder image
 
     Surface(
+        onClick = { onClickCardPlace.invoke(place) },
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .fillMaxWidth()
@@ -54,11 +55,19 @@ fun PlaceCard(place: Place) {
                     fontSize = 20.sp,
                     fontStyle = FontStyle.Italic
                 )
-                Image(
-                    if (place.hasBeenVisited) painterResource(R.drawable.baseline_check_circle_24) else painterResource(
-                        R.drawable.baseline_cancel_24
-                    ), contentDescription = "Checked if the place has been visited"
-                )
+                Row {
+                    Text(
+                        text = if (place.hasBeenVisited) "Visitado" else "Não visitado",
+                        modifier = Modifier.padding(bottom = 8.dp),
+                        fontSize = 20.sp,
+                        fontStyle = FontStyle.Italic
+                    )
+                    Image(
+                        if (place.hasBeenVisited) painterResource(R.drawable.baseline_check_circle_24) else painterResource(
+                            R.drawable.baseline_cancel_24
+                        ), contentDescription = "Checked if the place has been visited"
+                    )
+                }
             }
             Text(
                 text = place.description,
@@ -79,7 +88,7 @@ fun PlaceCardPreviewTrue() {
             1,
             name = "São Paulo",
             description = "The city of São Paulo is the largest city in Brazil and the capital of the state of São Paulo. It is the most populous city in Brazil, the Americas, the Western Hemisphere, and the Southern Hemisphere.",
-            
+
             location = "São Paulo, SP",
             true
         )
@@ -94,7 +103,7 @@ fun PlaceCardPreviewFalse() {
             2,
             name = "Teresina",
             description = "The city of Teresina is the capital of the state of Piauí, Brazil. It is the only capital in the northeastern states that was planned before its foundation, and it is the third capital of Brazil with the best quality of life, according to the United Nations Development Program (UNDP)",
-            
+
             location = "Teresina, PI",
             false
         )

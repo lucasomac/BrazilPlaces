@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -29,6 +30,7 @@ class RegisterActivity : ComponentActivity() {
     private var namePlace = ""
     private var descriptionPlace = ""
     private var addressPlace = ""
+    private var place: Place? = intent.getSerializableExtra("place", Place::class.java)
     private fun saveName(name: String) {
         namePlace = name
     }
@@ -62,19 +64,31 @@ class RegisterActivity : ComponentActivity() {
                         },
                     )
                 }) { innerPadding ->
-                    RegisterScreen(paddingValues = innerPadding,
+                    RegisterScreen(
+                        paddingValues = innerPadding,
                         saveName = ::saveName,
                         saveDescription = ::saveDescription,
                         saveAddress = ::saveAddress,
                         onSaveClick = {
-                            val place = Place(
+                            place = Place(
                                 name = namePlace,
                                 description = descriptionPlace,
                                 location = addressPlace
                             )
-                            savePlace(place)
+                            savePlace(place!!)
                             onBackPressedDispatcher.onBackPressed()
-                        })
+                        },
+                        onUpdateClick = {
+                            place = Place(
+                                name = namePlace,
+                                description = descriptionPlace,
+                                location = addressPlace
+                            )
+                            updatePlace(place!!)
+                            onBackPressedDispatcher.onBackPressed()
+                        },
+                        place = place
+                    )
                 }
             }
         }
@@ -83,6 +97,12 @@ class RegisterActivity : ComponentActivity() {
     private fun savePlace(place: Place) {
         lifecycleScope.launch {
             viewModel.savePlace(place)
+        }
+    }
+
+    private fun updatePlace(place: Place) {
+        lifecycleScope.launch {
+            viewModel.updatePlace(place)
         }
     }
 }

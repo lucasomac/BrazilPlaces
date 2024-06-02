@@ -17,32 +17,59 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.lucolimac.brazilplaces.model.Place
 import br.com.lucolimac.brazilplaces.ui.components.PlaceField
 import br.com.lucolimac.brazilplaces.ui.theme.BrazilPlacesTheme
 
 @Composable
 fun RegisterScreen(
     onSaveClick: () -> Unit = {},
+    onUpdateClick: () -> Unit = {},
     paddingValues: PaddingValues,
     saveName: (String) -> Unit,
     saveDescription: (String) -> Unit,
-    saveAddress: (String) -> Unit
+    saveAddress: (String) -> Unit,
+    place: Place? = null
 ) {
 
     Column(
         modifier = Modifier.padding(paddingValues), verticalArrangement = Arrangement.Top
     ) {
-        PlaceField(padding = paddingValues, label = "Nome do local", onValueChange = saveName)
-        PlaceField(
-            padding = paddingValues, label = "Descrição do local", onValueChange = saveDescription
-        )
-        PlaceField(
-            padding = paddingValues, label = "Endereço do local", onValueChange = saveAddress
-        )
+        if (place == null) {
+            PlaceField(padding = paddingValues, label = "Nome do local", onValueChange = saveName)
+            PlaceField(
+                padding = paddingValues,
+                label = "Descrição do local",
+                onValueChange = saveDescription
+            )
+            PlaceField(
+                padding = paddingValues, label = "Endereço do local", onValueChange = saveAddress
+            )
+        } else {
+            PlaceField(
+                value = place.name,
+                padding = paddingValues,
+                label = "Nome do local",
+                onValueChange = saveName
+            )
+            PlaceField(
+                value = place.description,
+                padding = paddingValues,
+                label = "Descrição do local",
+                onValueChange = saveDescription
+            )
+            PlaceField(
+                value = place.location,
+                padding = paddingValues,
+                label = "Endereço do local",
+                onValueChange = saveAddress
+            )
+        }
 
         ElevatedButton(
             onClick = {
-                onSaveClick.invoke()
+                if (place == null) onSaveClick.invoke()
+                else onUpdateClick.invoke()
             },
             modifier = Modifier
                 .fillMaxWidth()
